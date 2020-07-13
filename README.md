@@ -1,8 +1,6 @@
 # Google Keep takeout
 
 
----
-
 
 ```
 .
