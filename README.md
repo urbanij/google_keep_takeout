@@ -1,19 +1,25 @@
 # Google Keep takeout
 
-
-
-```
-.
-├── Keep/
-├── README.md
-├── archive_browser.html
-├── export.py
-└── exported.txt
-
-1 directory, 4 files
-```
-
+Run the script inside your takeout folder 
 ```sh
 python export.py > exported.txt
+```
+
+and get a txt file similar to this:
+
+```
+Total #notes = 294   -- sorted by (Last update, archiving/not archived)
+
+### Groceries
+Last edited: Monday July 13, 2020, 10:08:21 AM
+- [ ] nduja
+- [ ] nutella
+- [ ] ichnusa
+- [ ] ravioli 
+- [+] pesto genovese
+- [+] viennetta
+
+
+[...]
 ```
 
