@@ -5,8 +5,8 @@
 Keep
 archive_browser.html
 
-# output of `python export.py > exported.txt`
-exported.txt
+# output of `python export.py > exported.md`
+exported.*
 
 # misc
 markdown/

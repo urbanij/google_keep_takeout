@@ -2,10 +2,10 @@
 
 Run the script inside your takeout folder 
 ```sh
-python export.py > exported.txt
+python export.py > exported.md
 ```
 
-and get a txt file similar to this:
+and get a markdown file similar to this:
 
 ```
 Total #notes = 294   -- sorted by (Last update, archived/not archived)
@@ -16,8 +16,8 @@ Last edited: Monday July 13, 2020, 10:08:21 AM
 - [ ] nutella
 - [ ] ichnusa
 - [ ] ravioli 
-- [+] pesto genovese
-- [+] viennetta
+- [x] pesto genovese
+- [x] viennetta
 
 
 [...]

@@ -1,25 +1,31 @@
 """
 Mon 13 Jul 2020 19:08:05 CEST
 
-Export Google Keep notes to a txt file.
+Export Google Keep notes to a markdown file.
 
 After obtaining your Google Keep data from https://takeout.google.com/
 unzip the folder and cd into it.
 
 Copy this file in that folder and run:
-    python export.py > exported.txt
+    python export.py > exported.md
 
+or, if you prefer a simple txt file:
+    python export.py > exported.txt
 
 """
 
 import os
 import json
-import datetime 
+import datetime
+import pathlib
 
 
 PRINT_RAW = False
 PRINT_PRETTY_JSON = True
 
+
+PRINT_DATE = True
+RIGHT_ALIGN_DATE = True
 
 
 class Note:
@@ -34,7 +40,7 @@ class Note:
         if self._isList:
             tmp = ""
             for i in data['listContent']:
-                tick = '+' if i['isChecked'] else ' '
+                tick = 'x' if i['isChecked'] else ' '
                 tmp += "- [{}] {}\n".format(tick, i['text'])
             self._content = tmp; del tmp
         else:
@@ -48,9 +54,22 @@ class Note:
         return self._isTrashed
 
     def __repr__(self):
-        ans  = "### {} {}\n".format(self._name, "(Archived)" if self._isArchived else "")
-        ans += "Last edited: {}\n".format(self._format_date())
-        if self._title != '': ans += "Title: {}\n".format(self._title)
+        ans  = "#### {} {}\n".format(self._name, "(Archived)" if self._isArchived else "")
+        
+        if PRINT_DATE:
+            if RIGHT_ALIGN_DATE: 
+                ans += "<div style='text-align: right'>"
+
+            ans += "Last edited: {}\n".format(self._format_date())
+
+            if RIGHT_ALIGN_DATE: 
+                ans += "\b</div>\n"
+
+        ans += "\n"
+
+        if self._title != '': 
+            ans += "Title: {}\n".format(self._title)
+        
         ans += self._content
         return ans
 
@@ -59,12 +78,12 @@ class Note:
 
 if __name__ == '__main__':
 
-    root_folder = 'Keep'
+    root_folder = pathlib.Path('Keep')
     notes = [filename for filename in os.listdir(root_folder) if '.json' in filename]
 
     notes_list = []
     for filename in notes:
-        with open("{}/{}".format(root_folder, filename), 'r') as json_file:
+        with open(pathlib.Path("{}/{}".format(root_folder, filename)), 'r') as json_file:
             data = json.load(json_file)
             
             if PRINT_RAW:
@@ -85,8 +104,7 @@ if __name__ == '__main__':
     
 
 
-    print("Total #notes = {}   -- sorted by (Last update, archiving/not archived)\n\n".format(len(sorted_notes)))
+    print("Total #notes = {}  – sorted by (Last update, archived/not archived)\n\n".format(len(sorted_notes)))
     for i in sorted_notes:
-        print("{}\n\n\n".format(i))
-
-
+        print("{}\n".format(i))
+        print("---\n\n")
