@@ -1,7 +1,13 @@
-.DS_Store
+# some mac garbage
+.DS_Store 
+
+# google keep exported stuff
 Keep
 archive_browser.html
 
+# output of `python export.py > exported.txt`
 exported.txt
 
-
+# misc
+markdown/
+*fork*
