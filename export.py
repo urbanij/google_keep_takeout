@@ -1,4 +1,8 @@
 """
+MODIFIED BY CACTUS
+THANKS TO THE ORIGINAL AUTHOR
+"""
+"""
 Mon 13 Jul 2020 19:08:05 CEST
 
 Export Google Keep notes to a markdown file.
@@ -47,14 +51,14 @@ class Note:
             self._content = data['textContent'] 
 
     def _format_date(self):
-        # return a date of this type: Tuesday November 03, 2015, 03:20:51 PM
-        return self._date.strftime("%A %B %d, %Y, %I:%M:%S %p") # https://strftime.org/
+        # return a date of this type: Tuesday November 03, 2015, 03:20:51
+        return self._date.strftime("%A %B %d, %Y, %H:%M") # https://strftime.org/
 
     def isTrashed(self):
         return self._isTrashed
 
     def __repr__(self):
-        ans  = "#### {} {}\n".format(self._name, "(Archived)" if self._isArchived else "")
+        ans  = "## {} {}\n".format(self._name, "(Archived)" if self._isArchived else "")
         
         if PRINT_DATE:
             if RIGHT_ALIGN_DATE: 
@@ -63,7 +67,7 @@ class Note:
             ans += "Last edited: {}\n".format(self._format_date())
 
             if RIGHT_ALIGN_DATE: 
-                ans += "\b</div>\n"
+                ans += "</div>\n"
 
         ans += "\n"
 
@@ -103,8 +107,9 @@ if __name__ == '__main__':
     sorted_notes = sorted(sorted(notes_list, key=lambda x : x._isArchived), key=lambda x : x._raw_date, reverse = True)  
     
 
-
-    print("Total #notes = {}  – sorted by (Last update, archived/not archived)\n\n".format(len(sorted_notes)))
+    f = open('Google Keep Notes Archive.md','w')
+    print("# Google Keep Notes Archive", file = f)
+    print("###### Total notes = {}  – sorted by (Last update, archived/not archived)\n\n".format(len(sorted_notes)), file = f)
     for i in sorted_notes:
-        print("{}\n".format(i))
-        print("---\n\n")
+        print("{}\n".format(i), file = f)
+        print("---\n\n", file = f)
