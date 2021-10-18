@@ -1,25 +1,15 @@
 # Google Keep takeout
 
-Run the script inside your takeout folder 
+## Getting Started
+
+Run the script inside your takeout folder.
+
 ```sh
-python export.py > exported.md
+python export.py
 ```
 
-and get a markdown file similar to this:
+After that you can get a markdown file inside your takeout folder which named:
 
-```
-Total #notes = 294   -- sorted by (Last update, archived/not archived)
+Google Keep Notes Archive.md
 
-### Groceries
-Last edited: Monday July 13, 2020, 10:08:21 AM
-- [ ] nduja
-- [ ] nutella
-- [ ] ichnusa
-- [ ] ravioli 
-- [x] pesto genovese
-- [x] viennetta
-
-
-[...]
-```
-
+### You also can download the compiled exe version of this script from the [GitHub Releases](https://github.com/erbanku/google_keep_takeout/releases) to do that.

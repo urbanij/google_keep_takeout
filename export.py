@@ -1,21 +1,11 @@
 """
-MODIFIED BY CACTUS
-THANKS TO THE ORIGINAL AUTHOR
-"""
-"""
-Mon 13 Jul 2020 19:08:05 CEST
+Mon 18 Oct 2021 9:32:05 CST
 
 Export Google Keep notes to a markdown file.
 
 After obtaining your Google Keep data from https://takeout.google.com/
-unzip the folder and cd into it.
-
-Copy this file in that folder and run:
-    python export.py > exported.md
-
-or, if you prefer a simple txt file:
-    python export.py > exported.txt
-
+Unzip the folder.
+Copy the export.py file to that folder and run it.
 """
 
 import os
